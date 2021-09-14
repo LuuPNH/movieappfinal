@@ -18,7 +18,7 @@ class _NowPlayingState extends State<NowPlaying> {
   @override
   void initState() {
     super.initState();
-    nowPlayingMoviesBloc..getMovies();
+    nowPlayingMoviesBloc.getMovies();
   }
 
   @override
@@ -87,7 +87,7 @@ class _NowPlayingState extends State<NowPlaying> {
           ],
         ),
       );
-    } else
+    } else {
       return Container(
         height: 220.0,
         child: PageIndicatorContainer(
@@ -175,5 +175,6 @@ class _NowPlayingState extends State<NowPlaying> {
           ),
         ),
       );
+    }
   }
 }
