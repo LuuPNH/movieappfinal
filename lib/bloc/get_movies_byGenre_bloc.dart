@@ -5,7 +5,7 @@ import 'package:rxdart/rxdart.dart';
 
 class MoviesListByGenreBloc {
   final MovieRepository _repository = MovieRepository();
-  final BehaviorSubject<MovieResponse?> _subject =
+  final BehaviorSubject<MovieResponse> _subject =
       BehaviorSubject<MovieResponse>();
 
   getMoviesByGenre(int id) async {
@@ -14,7 +14,7 @@ class MoviesListByGenreBloc {
   }
 
   void drainStream() {
-    _subject.value = null;
+    _subject.value = _subject.value;
   }
 
   @mustCallSuper
@@ -23,7 +23,7 @@ class MoviesListByGenreBloc {
     _subject.close();
   }
 
-  BehaviorSubject<MovieResponse?> get subject => _subject;
+  BehaviorSubject<MovieResponse> get subject => _subject;
 }
 
 final moviesByGenreBloc = MoviesListByGenreBloc();

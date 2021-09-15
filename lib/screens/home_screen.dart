@@ -1,6 +1,7 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:movieappfinal/style/theme.dart' as Style;
+import 'package:movieappfinal/widgets/genres.dart';
 import 'package:movieappfinal/widgets/now_playing.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
           EvaIcons.menu2Outline,
           color: Colors.white,
         ),
-        title: Text("Discover"),
+        title: Text("Movie App"),
         actions: <Widget>[
           IconButton(
               onPressed: () {},
@@ -33,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: ListView(
         children: <Widget>[
           NowPlaying(),
+          GenresScreen(),
         ],
       ),
     );

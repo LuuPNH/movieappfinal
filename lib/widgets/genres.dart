@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movieappfinal/bloc/get_genres_bloc.dart';
+import 'package:movieappfinal/model/genre.dart';
 import 'package:movieappfinal/model/genre_response.dart';
+import 'package:movieappfinal/widgets/genres_list.dart';
 
 class GenresScreen extends StatefulWidget {
   @override
@@ -61,6 +63,13 @@ class _GenresScreenState extends State<GenresScreen> {
   }
 
   Widget _buildHomeWidget(GenreResponse data) {
-    return Center();
+    List<Genre> genres;
+    genres = data.genres;
+    if (genres.isEmpty) {
+      return Container(
+        child: Text("No Genres"),
+      );
+    } else
+      return GenresList(genres: genres);
   }
 }
