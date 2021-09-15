@@ -37,7 +37,7 @@ class _GenresListState extends State<GenresList>
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
-      height: size.height * 0.5,
+      height: size.height * 0.4,
       child: DefaultTabController(
         length: genres.length,
         child: Scaffold(
