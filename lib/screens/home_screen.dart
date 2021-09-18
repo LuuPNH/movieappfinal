@@ -4,6 +4,7 @@ import 'package:movieappfinal/style/theme.dart' as Style;
 import 'package:movieappfinal/widgets/genres.dart';
 import 'package:movieappfinal/widgets/now_playing.dart';
 import 'package:movieappfinal/widgets/persons.dart';
+import 'package:movieappfinal/widgets/top_movies.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -37,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
           NowPlaying(),
           GenresScreen(),
           PersonsList(),
+          TopMovies(),
         ],
       ),
     );

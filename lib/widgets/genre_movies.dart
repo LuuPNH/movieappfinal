@@ -28,7 +28,6 @@ class _GenreMoviesState extends State<GenreMovies> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     return StreamBuilder<MovieResponse>(
       stream: moviesByGenreBloc.subject.stream,
       builder: (context, AsyncSnapshot<MovieResponse> snapshot) {
