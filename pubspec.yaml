@@ -28,10 +28,12 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_rating_bar: ^4.0.0
+  flutter_typeahead: ^3.2.1
   font_awesome_flutter: ^9.1.0
+  http: ^0.13.3
+  lottie: ^1.2.0
   page_indicator: ^0.4.1
   rxdart: ^0.27.2
-  sliver_fab: ^1.0.0
   youtube_player_flutter: ^8.0.0
 
 dev_dependencie s:

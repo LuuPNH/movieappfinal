@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:movieappfinal/bloc/get_now_playing_bloc.dart';
 import 'package:movieappfinal/model/movie.dart';
 import 'package:movieappfinal/model/movie_response.dart';
+import 'package:movieappfinal/screens/detail_screen.dart';
 import 'package:movieappfinal/style/theme.dart' as Style;
 import 'package:page_indicator/page_indicator.dart';
 
@@ -108,7 +109,7 @@ class _NowPlayingState extends State<NowPlaying> {
                 child: Stack(
                   children: <Widget>[
                     Hero(
-                      tag: movies[index].id,
+                      tag: movies[index].id!,
                       child: Container(
                           width: MediaQuery.of(context).size.width,
                           height: 220.0,
@@ -118,7 +119,7 @@ class _NowPlayingState extends State<NowPlaying> {
                                 fit: BoxFit.cover,
                                 image: NetworkImage(
                                     "https://image.tmdb.org/t/p/original/" +
-                                        movies[index].backPoster)),
+                                        movies[index].backPoster!)),
                           )),
                     ),
                     SizedBox(
@@ -144,10 +145,20 @@ class _NowPlayingState extends State<NowPlaying> {
                         top: 0.0,
                         left: 0.0,
                         right: 0.0,
-                        child: Icon(
-                          FontAwesomeIcons.playCircle,
-                          color: Style.Colors.secondColor,
-                          size: 40.0,
+                        child: IconButton(
+                          icon: new Icon(
+                            FontAwesomeIcons.playCircle,
+                            color: Style.Colors.secondColor,
+                            size: 40.0,
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MovieDetailScreen(
+                                          movie: movies[index],
+                                        )));
+                          },
                         )),
                     Positioned(
                         bottom: 30.0,
@@ -158,7 +169,7 @@ class _NowPlayingState extends State<NowPlaying> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                movies[index].title,
+                                movies[index].title!,
                                 style: TextStyle(
                                     height: 1.5,
                                     color: Colors.white,

@@ -11,7 +11,6 @@ class MovieResponse {
             .map((i) => new Movie.fromJson(i))
             .toList(),
         error = "";
-
   MovieResponse.withError(String errorValue)
       : movies = List.empty(),
         error = errorValue;

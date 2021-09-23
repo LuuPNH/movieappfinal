@@ -7,7 +7,6 @@ import 'package:movieappfinal/model/video.dart';
 import 'package:movieappfinal/model/video_response.dart';
 import 'package:movieappfinal/screens/video_player.dart';
 import 'package:movieappfinal/style/theme.dart' as Style;
-import 'package:movieappfinal/widgets/casts.dart';
 import 'package:movieappfinal/widgets/movie_info.dart';
 import 'package:movieappfinal/widgets/similar_movies.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -26,7 +25,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
   @override
   void initState() {
     super.initState();
-    movieVideosBloc.getMoviesVideo(movie.id);
+    movieVideosBloc.getMoviesVideo(movie.id!);
   }
 
   @override
@@ -73,9 +72,9 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                   )),
               flexibleSpace: FlexibleSpaceBar(
                 title: Text(
-                  movie.title.length > 40
-                      ? movie.title.substring(0, 37) + "..."
-                      : movie.title,
+                  movie.title!.length > 40
+                      ? movie.title!.substring(0, 37) + "..."
+                      : movie.title!,
                   style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
                 ),
                 background: Stack(
@@ -86,7 +85,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                           image: DecorationImage(
                               image: NetworkImage(
                                   "https://image.tmdb.org/t/p/original/" +
-                                      movie.backPoster))),
+                                      movie.backPoster!))),
                       child: Container(
                         decoration:
                             BoxDecoration(color: Colors.black.withOpacity(0.3)),
@@ -117,7 +116,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Text(
-                            (movie.rating / 2).toString().substring(0, 3),
+                            (movie.rating! / 2).toString().substring(0, 3),
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 14.0,
@@ -128,7 +127,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                           ),
                           RatingBar.builder(
                             itemSize: 10.0,
-                            initialRating: movie.rating / 2,
+                            initialRating: movie.rating! / 2,
                             minRating: 1,
                             direction: Axis.horizontal,
                             allowHalfRating: true,
@@ -161,7 +160,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Text(
-                        movie.overview,
+                        movie.overview!,
                         style: TextStyle(
                             color: Colors.white, fontSize: 12.0, height: 1.5),
                       ),
@@ -170,10 +169,10 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                       height: 10.0,
                     ),
                     MovieInfo(
-                      id: movie.id,
+                      id: movie.id!,
                     ),
                     SimilarMovies(
-                      id: movie.id,
+                      id: movie.id!,
                     )
                   ],
                 )))

@@ -133,7 +133,7 @@ class _GenreMoviesState extends State<GenreMovies> {
                                 image: DecorationImage(
                                     image: NetworkImage(
                                         "https://image.tmdb.org/t/p/w200" +
-                                            movies[index].poster),
+                                            movies[index].poster!),
                                     fit: BoxFit.cover),
                               ),
                               child: Column(
@@ -152,7 +152,7 @@ class _GenreMoviesState extends State<GenreMovies> {
                       Container(
                         width: 100.0,
                         child: Text(
-                          movies[index].title,
+                          movies[index].title!,
                           maxLines: 2,
                           style: TextStyle(
                             height: 1.4,
@@ -168,7 +168,7 @@ class _GenreMoviesState extends State<GenreMovies> {
                       Row(
                         children: [
                           Text(
-                            (movies[index].rating / 2)
+                            (movies[index].rating! / 2)
                                 .toString()
                                 .substring(0, 3),
                             style: TextStyle(
@@ -181,7 +181,7 @@ class _GenreMoviesState extends State<GenreMovies> {
                           ),
                           RatingBar.builder(
                             itemSize: 8.0,
-                            initialRating: movies[index].rating / 2,
+                            initialRating: movies[index].rating! / 2,
                             minRating: 1,
                             direction: Axis.horizontal,
                             allowHalfRating: true,

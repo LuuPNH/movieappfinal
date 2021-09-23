@@ -4,6 +4,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:movieappfinal/bloc/get_movie_similar_bloc.dart';
 import 'package:movieappfinal/model/movie.dart';
 import 'package:movieappfinal/model/movie_response.dart';
+import 'package:movieappfinal/screens/detail_screen.dart';
 import 'package:movieappfinal/style/theme.dart' as Style;
 
 class SimilarMovies extends StatefulWidget {
@@ -123,12 +124,19 @@ class _SimilarMoviesState extends State<SimilarMovies> {
             return Padding(
               padding: EdgeInsets.only(top: 10.0, bottom: 10.0, right: 15.0),
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => MovieDetailScreen(
+                                movie: movies[index],
+                              )));
+                },
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Hero(
-                      tag: movies[index].id,
+                      tag: movies[index].id!,
                       child: Container(
                           width: 120.0,
                           height: 180.0,
@@ -140,7 +148,7 @@ class _SimilarMoviesState extends State<SimilarMovies> {
                                 fit: BoxFit.cover,
                                 image: NetworkImage(
                                     "https://image.tmdb.org/t/p/w200/" +
-                                        movies[index].poster)),
+                                        movies[index].poster!)),
                           )),
                     ),
                     SizedBox(
@@ -149,7 +157,7 @@ class _SimilarMoviesState extends State<SimilarMovies> {
                     Container(
                       width: 100,
                       child: Text(
-                        movies[index].title,
+                        movies[index].title!,
                         maxLines: 2,
                         style: TextStyle(
                             height: 1.4,
@@ -165,7 +173,9 @@ class _SimilarMoviesState extends State<SimilarMovies> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          (movies[index].rating / 2).toString().substring(0, 3),
+                          (movies[index].rating! / 2)
+                              .toString()
+                              .substring(0, 3),
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 10.0,
@@ -176,7 +186,7 @@ class _SimilarMoviesState extends State<SimilarMovies> {
                         ),
                         RatingBar.builder(
                           itemSize: 8.0,
-                          initialRating: movies[index].rating / 2,
+                          initialRating: movies[index].rating! / 2,
                           minRating: 1,
                           direction: Axis.horizontal,
                           allowHalfRating: true,
