@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:movieappfinal/bloc/get_casts_bloc.dart';
+import 'package:movieappfinal/home_screen/cast/get_casts_bloc.dart';
 import 'package:movieappfinal/model/cast.dart';
 import 'package:movieappfinal/model/cast_response.dart';
 import 'package:movieappfinal/style/theme.dart' as Style;

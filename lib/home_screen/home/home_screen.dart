@@ -1,11 +1,11 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:movieappfinal/search_movie_screen/search.dart';
 import 'package:movieappfinal/style/theme.dart' as Style;
-import 'package:movieappfinal/widgets/genres.dart';
-import 'package:movieappfinal/widgets/now_playing.dart';
-import 'package:movieappfinal/widgets/persons.dart';
-import 'package:movieappfinal/widgets/search.dart';
-import 'package:movieappfinal/widgets/top_movies.dart';
+import 'package:movieappfinal/home_screen/genres/genres.dart';
+import 'package:movieappfinal/home_screen/slide_now_playing/now_playing.dart';
+import 'package:movieappfinal/home_screen/person/persons.dart';
+import 'package:movieappfinal/home_screen/top_movies/top_movies.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -17,10 +17,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _openEndDrawer() {
     _scaffoldKey.currentState!.openEndDrawer();
-  }
-
-  void _closeEndDrawer() {
-    Navigator.of(context).pop();
   }
 
   @override
@@ -54,7 +50,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      // Disable opening the end drawer with a swipe gesture.
       endDrawerEnableOpenDragGesture: false,
       body: ListView(
         children: <Widget>[

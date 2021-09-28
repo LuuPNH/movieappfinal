@@ -30,8 +30,8 @@ class MovieRepository {
     }
   }
 
-  Future<MovieResponse> getSearchMovies(String? name) async {
-    var params = {"api_key": apiKey, "page": 1, "query": name};
+  Future<MovieResponse> getSearchMovies(String? name, int? page) async {
+    var params = {"api_key": apiKey, "page": page ?? 1, "query": name};
     try {
       Response response =
           await _dio.get(searchMovieUrl, queryParameters: params);

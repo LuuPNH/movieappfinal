@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movieappfinal/bloc/get_movie_detail_bloc.dart';
+import 'package:movieappfinal/detai_movie_screen/get_movie_detail_bloc.dart';
 import 'package:movieappfinal/model/movie_detail.dart';
 import 'package:movieappfinal/model/movie_detail_response.dart';
 import 'package:movieappfinal/style/theme.dart' as Style;

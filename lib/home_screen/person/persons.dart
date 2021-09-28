@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:movieappfinal/bloc/get_persons_bloc.dart';
+import 'package:movieappfinal/home_screen/person/get_persons_bloc.dart';
 import 'package:movieappfinal/model/person.dart';
 import 'package:movieappfinal/model/person_response.dart';
 import 'package:movieappfinal/style/theme.dart' as Style;

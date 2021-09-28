@@ -1,14 +1,14 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:movieappfinal/bloc/get_movie_videos_bloc.dart';
+import 'package:movieappfinal/detai_movie_screen/get_movie_videos_bloc.dart';
 import 'package:movieappfinal/model/movie.dart';
 import 'package:movieappfinal/model/video.dart';
 import 'package:movieappfinal/model/video_response.dart';
-import 'package:movieappfinal/screens/video_player.dart';
+import 'package:movieappfinal/video_screen/video_player.dart';
 import 'package:movieappfinal/style/theme.dart' as Style;
-import 'package:movieappfinal/widgets/movie_info.dart';
-import 'package:movieappfinal/widgets/similar_movies.dart';
+import 'package:movieappfinal/detai_movie_screen/movie_info.dart';
+import 'package:movieappfinal/detai_movie_screen/similar_movies.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class MovieDetailScreen extends StatefulWidget {

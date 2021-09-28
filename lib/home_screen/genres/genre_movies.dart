@@ -1,10 +1,10 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:movieappfinal/bloc/get_movies_byGenre_bloc.dart';
+import 'package:movieappfinal/home_screen/genres/get_movies_byGenre_bloc.dart';
 import 'package:movieappfinal/model/movie.dart';
 import 'package:movieappfinal/model/movie_response.dart';
-import 'package:movieappfinal/screens/detail_screen.dart';
+import 'package:movieappfinal/detai_movie_screen/detail_screen.dart';
 import 'package:movieappfinal/style/theme.dart' as Style;
 
 class GenreMovies extends StatefulWidget {
@@ -84,7 +84,7 @@ class _GenreMoviesState extends State<GenreMovies> {
       );
     } else
       return Container(
-        height: 270.0,
+        height: 290.0,
         padding: EdgeInsets.only(left: 10.0),
         child: ListView.builder(
             scrollDirection: Axis.horizontal,
@@ -149,16 +149,18 @@ class _GenreMoviesState extends State<GenreMovies> {
                       SizedBox(
                         height: 10.0,
                       ),
-                      Container(
-                        width: 100.0,
-                        child: Text(
-                          movies[index].title!,
-                          maxLines: 2,
-                          style: TextStyle(
-                            height: 1.4,
-                            color: Colors.white,
-                            fontSize: 11.0,
-                            fontWeight: FontWeight.bold,
+                      Expanded(
+                        child: Container(
+                          width: 100.0,
+                          child: Text(
+                            movies[index].title!,
+                            maxLines: 2,
+                            style: TextStyle(
+                              height: 1.4,
+                              color: Colors.white,
+                              fontSize: 11.0,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:movieappfinal/bloc/get_now_playing_bloc.dart';
+import 'package:movieappfinal/home_screen/slide_now_playing/get_now_playing_bloc.dart';
 import 'package:movieappfinal/model/movie.dart';
 import 'package:movieappfinal/model/movie_response.dart';
-import 'package:movieappfinal/screens/detail_screen.dart';
+import 'package:movieappfinal/detai_movie_screen/detail_screen.dart';
 import 'package:movieappfinal/style/theme.dart' as Style;
 import 'package:page_indicator/page_indicator.dart';
 

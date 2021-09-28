@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movieappfinal/screens/home_screen.dart';
+import 'package:movieappfinal/home_screen/home/home_screen.dart';
 
 void main() {
   runApp(MyApp());
