@@ -1,5 +1,6 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:movieappfinal/login_screen/screens/login/login_screen.dart';
 import 'package:movieappfinal/search_movie_screen/search.dart';
 import 'package:movieappfinal/style/theme.dart' as Style;
 import 'package:movieappfinal/home_screen/genres/genres.dart';
@@ -14,7 +15,22 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
+  int selectedIndex = 0;
+  List<Widget> widgetOptions = <Widget>[
+    ListView(
+        children: <Widget>[
+          NowPlaying(),
+          GenresScreen(),
+          PersonsList(),
+          TopMovies(),
+        ]),
+    LoginScreen()
+  ];
+  void _onItemTapped(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+  }
   void _openEndDrawer() {
     _scaffoldKey.currentState!.openEndDrawer();
   }
@@ -51,13 +67,23 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       endDrawerEnableOpenDragGesture: false,
-      body: ListView(
-        children: <Widget>[
-          NowPlaying(),
-          GenresScreen(),
-          PersonsList(),
-          TopMovies(),
+      body: Container(
+        child: widgetOptions.elementAt(selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_box),
+            label: 'Business',
+          ),
         ],
+        currentIndex: selectedIndex,
+        selectedItemColor: Style.Colors.secondColor,
+        onTap: _onItemTapped,
       ),
     );
   }

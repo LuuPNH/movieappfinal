@@ -7,4 +7,6 @@ class Colors {
   static const Color secondColor = const Color(0xFFf4C10F);
   static const Color titleColor = const Color(0xFF5a606b);
   static const Color btnColor = const Color(0xFFFFFFFFF);
+  static const Color text = const Color(0xFFFFFFFFF);
+
 }
