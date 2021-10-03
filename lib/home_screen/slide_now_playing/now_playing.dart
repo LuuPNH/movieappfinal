@@ -90,7 +90,7 @@ class _NowPlayingState extends State<NowPlaying> {
       );
     } else {
       return Container(
-        height: 220.0,
+        height: 250.0,
         child: PageIndicatorContainer(
           align: IndicatorAlign.bottom,
           length: movies.take(5).length,

@@ -1,18 +1,17 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:movieappfinal/login_screen/screens/register/register_screen.dart';
 import 'package:movieappfinal/style/Button_form.dart';
 import 'package:movieappfinal/style/theme.dart' as Style;
 
 
-class LoginForm extends StatefulWidget {
-  const LoginForm({Key? key}) : super(key: key);
+class RegisterForm extends StatefulWidget {
+  const RegisterForm({Key? key}) : super(key: key);
 
   @override
-  _LoginFormState createState() => _LoginFormState();
+  _RegisterFormState createState() => _RegisterFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class _RegisterFormState extends State<RegisterForm> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordlController = TextEditingController();
 
@@ -29,7 +28,7 @@ class _LoginFormState extends State<LoginForm> {
         child: Column(
           children: [
             //email
-              TextFormField(
+            TextFormField(
                 keyboardType: TextInputType.emailAddress,
                 controller: emailController,
                 style: TextStyle(color: Style.Colors.text),
@@ -47,8 +46,8 @@ class _LoginFormState extends State<LoginForm> {
                   labelText: 'Email',
                   labelStyle: TextStyle(color: Style.Colors.secondColor),
                   icon: Icon(EvaIcons.email, color: Style.Colors.secondColor),
-                  )
-                ),
+                )
+            ),
             SizedBox(
               height: 5.0,
             ),
@@ -80,26 +79,42 @@ class _LoginFormState extends State<LoginForm> {
             SizedBox(
               height: 5.0,
             ),
-            //Button
-            ButtonForm(
-              height: 40.0,
-              width: MediaQuery.of(context).size.width * 0.5,
-              colorButton: Style.Colors.secondColor,
-              titleButton: "Login",
-              function: (){},
+            //confirm password
+            TextFormField(
+              controller: passwordlController,
+              style: TextStyle(color: Style.Colors.text),
+              obscureText: true,
+              decoration: InputDecoration(
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(4)),
+                    borderSide: BorderSide(width: 1,color: Style.Colors.secondColor),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(4)),
+                    borderSide: BorderSide(width: 1,color: Style.Colors.secondColor),
+                  ),
+                  hintText: 'Confirm password',
+                  hintStyle: TextStyle(color: Style.Colors.text),
+                  labelText: 'Confirm password',
+                  labelStyle: TextStyle(color: Style.Colors.secondColor),
+                  icon: Icon(EvaIcons.lock, color: Style.Colors.secondColor),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderSide: const BorderSide(color: Style.Colors.secondColor, width: 1.0)
+                  )
+              ),
             ),
             SizedBox(
               height: 5.0,
             ),
+
 
             ButtonForm(
               height: 40.0,
               width: MediaQuery.of(context).size.width * 0.5,
               colorButton: Style.Colors.secondColor,
               titleButton: "Register",
-              function: (){
-                Navigator.push(context, MaterialPageRoute(builder: (_) { return RegisterScreen();}) );
-              },
+              function: (){},
             ),
           ],
         ),

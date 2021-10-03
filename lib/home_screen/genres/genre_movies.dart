@@ -84,7 +84,7 @@ class _GenreMoviesState extends State<GenreMovies> {
       );
     } else
       return Container(
-        height: 290.0,
+        height: 500.0,
         padding: EdgeInsets.only(left: 10.0),
         child: ListView.builder(
             scrollDirection: Axis.horizontal,
