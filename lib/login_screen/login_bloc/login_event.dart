@@ -1,67 +1,39 @@
-class LoginState {
-  final bool? isEmailValid;
-  final bool? isPasswordVaild;
-  final bool? isSummiting;
-  final bool? isSuccess;
-  final bool? isFailure;
+import 'package:equatable/equatable.dart';
 
-  bool get isFormValid => isEmailValid! && isPasswordVaild!;
+abstract class LoginEvent extends Equatable {
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+}
 
-  LoginState({required this.isEmailValid,required this.isPasswordVaild,required this.isSummiting,required this.isSuccess,required this.isFailure});
+class LoginEmailChange extends LoginEvent {
+  final String email;
 
-  factory LoginState.initial() {
-    return LoginState(
-      isEmailValid: true,
-      isPasswordVaild: true,
-      isSummiting: false,
-      isSuccess: false,
-      isFailure: false,
-    );
-  }
-  factory LoginState.loading() {
-    return LoginState(
-      isEmailValid: true,
-      isPasswordVaild: true,
-      isSummiting: true,
-      isSuccess: false,
-      isFailure: false,
-    );
-  }
-  factory LoginState.failure() {
-    return LoginState(
-      isEmailValid: true,
-      isPasswordVaild: true,
-      isSummiting: false,
-      isSuccess: false,
-      isFailure: true,
-    );
-  }
-  factory LoginState.success() {
-    return LoginState(
-      isEmailValid: true,
-      isPasswordVaild: true,
-      isSummiting: false,
-      isSuccess: true,
-      isFailure: false,
-    );
-  }
+  LoginEmailChange(this.email);
 
-  LoginState update(bool? isEmailValid, bool? isPasswordValid) {
-      return copyWith(
-          isEmailValid,
-          isPasswordVaild,
-          false,
-          false,
-          false);
-  }
+  @override
+  // TODO: implement props
+  List<Object?> get props => [email];
+}
 
-  LoginState copyWith( bool? isEmailVaild, bool? isPasswordVaild, bool? isSumitting, bool? isSuccess, bool? isFailure
-      ){
-        return LoginState(
-            isEmailValid: isEmailVaild ?? this.isEmailValid,
-          isPasswordVaild: isPasswordVaild ?? this.isPasswordVaild,
-          isSummiting: isSumitting ?? this.isSummiting,
-          isSuccess: isSuccess ?? this.isSuccess,
-          isFailure: isFailure ?? this.isFailure);
-  }
+class LoginPasswordChanged extends LoginEvent {
+  final String password;
+
+  LoginPasswordChanged(this.password);
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [password];
+}
+
+class LoginWithCredentialsPressed extends LoginEvent {
+  final String email;
+  final String password;
+
+  LoginWithCredentialsPressed(this.email, this.password);
+
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [email,password];
 }

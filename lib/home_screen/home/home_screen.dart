@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
           PersonsList(),
           TopMovies(),
         ]),
-    LoginScreen()
+    //LoginScreen()
   ];
   void _onItemTapped(int index) {
     setState(() {
