@@ -1,5 +1,9 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movieappfinal/login_screen/authentication_bloc/authentication_bloc.dart';
+import 'package:movieappfinal/login_screen/authentication_bloc/authentication_event.dart';
 import 'package:movieappfinal/login_screen/screens/login/login_screen.dart';
 import 'package:movieappfinal/search_movie_screen/search.dart';
 import 'package:movieappfinal/style/theme.dart' as Style;
@@ -9,6 +13,9 @@ import 'package:movieappfinal/home_screen/person/persons.dart';
 import 'package:movieappfinal/home_screen/top_movies/top_movies.dart';
 
 class HomeScreen extends StatefulWidget {
+  final FirebaseAuth user;
+
+  const HomeScreen({Key? key, required this.user}) : super(key: key);
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -54,7 +61,14 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: Icon(
                 EvaIcons.searchOutline,
                 color: Colors.white,
-              ))
+              )),
+          IconButton(
+            icon: Icon(Icons.exit_to_app),
+            onPressed: () {
+              BlocProvider.of<AuthenticationBloc>(context)
+                  .add(AuthenticatonLoggedOut());
+            },
+          )
         ],
       ),
       endDrawer: Drawer(

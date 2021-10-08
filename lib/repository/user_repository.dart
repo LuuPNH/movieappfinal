@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 class UserRepository {
   final FirebaseAuth? firebaseAuth;
 
+
   UserRepository() : firebaseAuth = FirebaseAuth.instance;
 
   Future<void> signInWithCredentials(String email, String password) {
@@ -12,7 +13,7 @@ class UserRepository {
   }
 
   Future<void> signUp (String email, String password) {
-    return firebaseAuth!.signInWithEmailAndPassword(
+    return firebaseAuth!.createUserWithEmailAndPassword(
         email: email, password: password);
   }
 

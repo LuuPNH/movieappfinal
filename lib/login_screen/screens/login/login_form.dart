@@ -1,6 +1,9 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movieappfinal/home_screen/home/home_screen.dart';
+import 'package:movieappfinal/login_screen/authentication_bloc/authentication_bloc.dart';
+import 'package:movieappfinal/login_screen/authentication_bloc/authentication_event.dart';
 import 'package:movieappfinal/login_screen/login_bloc/login_bloc.dart';
 import 'package:movieappfinal/login_screen/login_bloc/login_state.dart';
 import 'package:movieappfinal/login_screen/login_bloc/login_event.dart';
@@ -71,6 +74,7 @@ class _LoginFormState extends State<LoginForm> {
         }
         if(state.isSuccess!) {
           print("Success");
+          BlocProvider.of<AuthenticationBloc>(context).add(AuthenticatonLoggedIn());
         }
       },
       child: BlocBuilder<LoginBloc, LoginState> (
@@ -82,7 +86,6 @@ class _LoginFormState extends State<LoginForm> {
                 children: [
                   //email
                   TextFormField(
-                  keyboardType: TextInputType.emailAddress,
                   controller: emailController,
                   style: TextStyle(color: Style.Colors.text),
                   decoration: InputDecoration(
@@ -105,7 +108,6 @@ class _LoginFormState extends State<LoginForm> {
                       )
                   ),
                     autovalidate: true,
-                    autocorrect: false,
                     validator: (_) {
                       return !state.isEmailValid! ? 'Invalid Email' : null;
                     },
@@ -137,7 +139,6 @@ class _LoginFormState extends State<LoginForm> {
                             borderSide: const BorderSide(color: Style.Colors.secondColor, width: 1.0)
                         )
                     ),
-                    autocorrect: true,
                     autovalidate: true,
                     validator: (value) {
                       if (value == null || value.isEmpty) {

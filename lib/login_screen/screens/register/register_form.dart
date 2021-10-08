@@ -1,6 +1,8 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movieappfinal/login_screen/authentication_bloc/authentication_bloc.dart';
+import 'package:movieappfinal/login_screen/authentication_bloc/authentication_event.dart';
 import 'package:movieappfinal/login_screen/register_bloc/register_bloc.dart';
 import 'package:movieappfinal/login_screen/register_bloc/register_event.dart';
 import 'package:movieappfinal/login_screen/register_bloc/register_state.dart';
@@ -68,7 +70,10 @@ class _RegisterFormState extends State<RegisterForm> {
                     )));
         }
         if(state.isSuccess!) {
-          print("Success");
+          BlocProvider.of<AuthenticationBloc>(context).add(
+            AuthenticatonLoggedIn(),
+          );
+          Navigator.pop(context);
         }
       },
       child: BlocBuilder<RegisterBloc, RegisterState>(
@@ -141,9 +146,8 @@ class _RegisterFormState extends State<RegisterForm> {
                     titleButton: "Register",
                     function: (){
                       if(isButtonEnable(state)){
-                        _onFormSubmitted();
-                      }
-                    },
+                      _onFormSubmitted();
+                      }}
                   ),
                   SizedBox(
                     height: 5.0,

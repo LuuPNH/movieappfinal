@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movieappfinal/home_screen/home/home_screen.dart';
 import 'package:movieappfinal/login_screen/authentication_bloc/authentication_bloc.dart';
 import 'package:movieappfinal/login_screen/authentication_bloc/authentication_event.dart';
 import 'package:movieappfinal/login_screen/authentication_bloc/authentication_state.dart';
@@ -61,7 +62,7 @@ class _MyAppState extends State<MyApp> {
                 ));
           }
           if(state is AuthenticationSuccess) {
-            return HomeAfterScreen(
+            return HomeScreen(
               user: state.firebaseUser,
             );
           }
