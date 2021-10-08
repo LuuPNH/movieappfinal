@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 class UserRepository {
   final FirebaseAuth? firebaseAuth;
 
-  UserRepository({ this.firebaseAuth});
+  UserRepository() : firebaseAuth = FirebaseAuth.instance;
 
   Future<void> signInWithCredentials(String email, String password) {
     return firebaseAuth!.signInWithEmailAndPassword(email: email, password: password);
@@ -21,9 +21,9 @@ class UserRepository {
   }
 
   Future<bool> isSignedIn() async {
+
     final currentUser = await firebaseAuth!.currentUser;
     return currentUser != null ;
-
   }
 
   Future<FirebaseAuth> getUser() async {

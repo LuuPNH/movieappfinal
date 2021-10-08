@@ -4,11 +4,12 @@ import 'package:movieappfinal/login_screen/authentication_bloc/authentication_st
 import 'package:movieappfinal/repository/user_repository.dart';
 
 class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> {
-  final UserRepository _userRepository;
+  final UserRepository? _userRepository;
   AuthenticationBloc(UserRepository userRepository) : _userRepository = userRepository, super(AuthenticationInitial());
 
   @override
   Stream<AuthenticationState> mapEventToState(AuthenticationEvent event) async* {
+    print(event);
     if(event is AuthenticatonStarted) {
         yield* _mapAuthenticationStartedToState();
     } else if (event is AuthenticatonLoggedIn) {
@@ -20,20 +21,20 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
 
   //AuthenticatonLoggedIn
   Stream<AuthenticationState> _mapAuthenticationLoggedInToState() async* {
-    yield AuthenticationSuccess(await _userRepository.getUser());
+    yield AuthenticationSuccess(await _userRepository!.getUser());
   }
 
   //AuthenticatonLoggedOut
   Stream<AuthenticationState> _mapAuthenticationLoggedOutToState() async* {
     yield AuthenticationFailure();
-    _userRepository.signOut();
+    _userRepository!.signOut();
   }
 
   //AuthenticatonStarted
   Stream<AuthenticationState> _mapAuthenticationStartedToState() async* {
-      final isSignedIn = await _userRepository.isSignedIn();
+      final isSignedIn = await _userRepository!.isSignedIn();
       if(isSignedIn) {
-        final firebaseUser = await _userRepository.getUser();
+        final firebaseUser = await _userRepository!.getUser();
         yield AuthenticationSuccess(firebaseUser);
       } else {
         yield AuthenticationFailure();
