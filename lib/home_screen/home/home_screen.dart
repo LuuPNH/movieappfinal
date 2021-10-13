@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movieappfinal/login_screen/authentication_bloc/authentication_bloc.dart';
 import 'package:movieappfinal/login_screen/authentication_bloc/authentication_event.dart';
+import 'package:movieappfinal/login_screen/authentication_bloc/authentication_state.dart';
 import 'package:movieappfinal/login_screen/screens/login/login_screen.dart';
+import 'package:movieappfinal/repository/user_repository.dart';
 import 'package:movieappfinal/search_movie_screen/search.dart';
 import 'package:movieappfinal/style/theme.dart' as Style;
 import 'package:movieappfinal/home_screen/genres/genres.dart';
@@ -13,9 +15,12 @@ import 'package:movieappfinal/home_screen/person/persons.dart';
 import 'package:movieappfinal/home_screen/top_movies/top_movies.dart';
 
 class HomeScreen extends StatefulWidget {
-  final FirebaseAuth user;
+  final UserRepository userRepository;
 
-  const HomeScreen({Key? key, required this.user}) : super(key: key);
+  HomeScreen({Key? key, required UserRepository userRepository})
+      : userRepository = userRepository,
+        super(key: key);
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -24,22 +29,51 @@ class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   int selectedIndex = 0;
   List<Widget> widgetOptions = <Widget>[
-    ListView(
-        children: <Widget>[
-          NowPlaying(),
-          GenresScreen(),
-          PersonsList(),
-          TopMovies(),
-        ]),
-    //LoginScreen()
+    ListView(children: <Widget>[
+      NowPlaying(),
+      GenresScreen(),
+      PersonsList(),
+      TopMovies(),
+    ]),
+    BlocBuilder<AuthenticationBloc, AuthenticationState>(
+        builder: (context, state) {
+        if(state is AuthenticationFailure) {
+        return LoginScreen();
+      }
+      if (state is AuthenticationSuccess) {
+        return Container(color: Colors.red);
+      }
+      return Scaffold(
+          appBar: AppBar(),
+          body: Container(
+              child: Container(
+            color: Colors.blue,
+          )
+              //LoginScreen(userRepository: _userRepository,),
+              ));
+    })
   ];
+
+  // void _sendDataBack(BuildContext context) {
+  //   Navigator.pop(context, _userRepository);
+  // }
+
   void _onItemTapped(int index) {
     setState(() {
       selectedIndex = index;
     });
   }
+
   void _openEndDrawer() {
     _scaffoldKey.currentState!.openEndDrawer();
+  }
+
+  @override
+  void initState() {
+    // BlocProvider(
+    //   create: (context) => AuthenticationBloc(_userRepository)..add(AuthenticatonStarted()),
+    // );
+    super.initState();
   }
 
   @override

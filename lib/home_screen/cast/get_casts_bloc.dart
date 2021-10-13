@@ -5,7 +5,7 @@ import 'package:rxdart/rxdart.dart';
 
 class CastsBloc {
   final MovieRepository _repository = MovieRepository();
-  final BehaviorSubject<CastResponse> _subject =
+   BehaviorSubject<CastResponse> _subject =
       BehaviorSubject<CastResponse>();
 
   getCasts(int id) async {
@@ -14,7 +14,7 @@ class CastsBloc {
   }
 
   void drainStream() {
-    _subject.value = _subject.value;
+    _subject =  BehaviorSubject<CastResponse>();
   }
 
   @mustCallSuper

@@ -7,14 +7,13 @@ import 'package:movieappfinal/repository/user_repository.dart';
 import 'package:movieappfinal/style/theme.dart' as Style;
 
 class LoginScreen extends StatelessWidget {
-  final UserRepository _userRepository;
 
-  const LoginScreen({Key? key, required UserRepository userRepository}) : _userRepository = userRepository, super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<LoginBloc>(
-      create: (context) => LoginBloc(_userRepository),
+      create: (context) => LoginBloc(),
       child: Container(
           height: double.infinity,
           decoration: BoxDecoration(
@@ -38,7 +37,7 @@ class LoginScreen extends StatelessWidget {
                 ), ),
                 Container(
                   margin: const EdgeInsets.only(top: 200.0),
-                  child: LoginForm(userRepository: _userRepository),
+                  child: LoginForm(),
                 )
             ]),
           ),

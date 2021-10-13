@@ -14,9 +14,8 @@ import 'package:movieappfinal/style/theme.dart' as Style;
 
 
 class LoginForm extends StatefulWidget {
-  final UserRepository _userRepository;
 
-  const LoginForm({Key? key, required UserRepository userRepository}) :_userRepository = userRepository, super(key: key);
+  const LoginForm({Key? key}) : super(key: key);
 
   @override
   _LoginFormState createState() => _LoginFormState();
@@ -175,7 +174,7 @@ class _LoginFormState extends State<LoginForm> {
                     function: (){
                       Navigator.push(context, MaterialPageRoute(
                           builder: (_) {
-                            return RegisterScreen(userRepository: widget._userRepository);
+                            return RegisterScreen();
                           }) );
                     },
                   ),

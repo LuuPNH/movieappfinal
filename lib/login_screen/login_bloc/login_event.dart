@@ -18,7 +18,6 @@ class LoginEmailChange extends LoginEvent {
 
 class LoginPasswordChanged extends LoginEvent {
   final String password;
-
   LoginPasswordChanged(this.password);
 
   @override

@@ -5,11 +5,9 @@ import 'package:movieappfinal/login_screen/utils/validator.dart';
 import 'package:movieappfinal/repository/user_repository.dart';
 
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
-  final UserRepository _userRepository;
+  RegisterBloc() : super(RegisterState.initial());
 
-  RegisterBloc({required UserRepository userRepository})
-      : _userRepository = userRepository,
-        super(RegisterState.initial());
+  UserRepository userRepository = UserRepository();
 
   @override
   Stream<RegisterState> mapEventToState(RegisterEvent event) async* {
@@ -27,7 +25,8 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     yield state.update(isEmailValid: Validators.isValidEmail(email));
   }
 
-  Stream<RegisterState> _mapRegisterPasswordChangeToState(String password) async* {
+  Stream<RegisterState> _mapRegisterPasswordChangeToState(
+      String password) async* {
     yield state.update(isPasswordValid: Validators.isValidPassword(password));
   }
 
@@ -35,7 +34,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       {String? email, String? password}) async* {
     yield RegisterState.loading();
     try {
-      await _userRepository.signUp(email!, password!);
+      await userRepository.signUp(email!, password!);
       yield RegisterState.success();
     } catch (error) {
       print(error);

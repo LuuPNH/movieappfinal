@@ -12,9 +12,8 @@ import 'package:movieappfinal/style/theme.dart' as Style;
 
 
 class RegisterForm extends StatefulWidget {
-  final UserRepository _userRepository;
 
-  const RegisterForm({Key? key, required UserRepository userRepository}) :_userRepository = userRepository, super(key: key);
+  const RegisterForm({Key? key}) :super(key: key);
 
   @override
   _RegisterFormState createState() => _RegisterFormState();

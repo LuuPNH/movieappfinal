@@ -5,10 +5,9 @@ import 'package:movieappfinal/login_screen/utils/validator.dart';
 import 'package:movieappfinal/repository/user_repository.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  final UserRepository _userRepository;
 
-  LoginBloc(UserRepository userRepository) : _userRepository =  userRepository, super(LoginState.initial());
-
+    UserRepository userRepository = UserRepository();
+  LoginBloc() : super(LoginState.initial());
 
   @override
   Stream<LoginState> mapEventToState (LoginEvent event) async* {
@@ -31,7 +30,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   Stream<LoginState> _mapLoginWithCredentialsPressedToState(String email, String password) async* {
     yield LoginState.loading();
     try {
-      await _userRepository.signInWithCredentials(email, password);
+      await userRepository.signInWithCredentials(email, password);
       //print("thanhcong");
       yield LoginState.success();
     } catch (error) {

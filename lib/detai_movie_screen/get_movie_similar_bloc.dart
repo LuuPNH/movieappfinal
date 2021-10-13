@@ -5,7 +5,7 @@ import 'package:rxdart/rxdart.dart';
 
 class SimilarMovieBloc {
   final MovieRepository _repository = MovieRepository();
-  final BehaviorSubject<MovieResponse> _subject =
+   BehaviorSubject<MovieResponse> _subject =
       BehaviorSubject<MovieResponse>();
 
   getSmililarMovies(int id) async {
@@ -14,7 +14,7 @@ class SimilarMovieBloc {
   }
 
   void drainStream() {
-    _subject.value = _subject.value;
+    _subject =  BehaviorSubject<MovieResponse>();
   }
 
   @mustCallSuper

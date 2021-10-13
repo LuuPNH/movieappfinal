@@ -5,7 +5,7 @@ import 'package:rxdart/rxdart.dart';
 
 class MoviesSearchBloc {
   final MovieRepository _repository = MovieRepository();
-  final BehaviorSubject<MovieResponse> _subject =
+  BehaviorSubject<MovieResponse> _subject =
       BehaviorSubject<MovieResponse>();
   MovieResponse? response;
 
@@ -42,7 +42,7 @@ class MoviesSearchBloc {
   // }
 
   void drainStream() {
-    _subject.value = _subject.value;
+    _subject =  BehaviorSubject<MovieResponse>();
   }
 
   @mustCallSuper

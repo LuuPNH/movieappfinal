@@ -10,9 +10,9 @@ import 'package:movieappfinal/repository/user_repository.dart';
 import 'package:movieappfinal/style/theme.dart' as Style;
 
 class RegisterScreen extends StatelessWidget {
-  final UserRepository _userRepository;
 
-  const RegisterScreen({Key? key,required UserRepository userRepository}) : _userRepository = userRepository, super(key: key);
+
+  const RegisterScreen({Key? key}) : super(key: key);
 
 
   @override
@@ -35,7 +35,7 @@ class RegisterScreen extends StatelessWidget {
         ),
         title: Text("Movie App")),
       body: BlocProvider<RegisterBloc>(
-        create: (context) => RegisterBloc(userRepository: _userRepository),
+        create: (context) => RegisterBloc(),
         child: Container(
           height: double.infinity,
           decoration: BoxDecoration(
@@ -59,7 +59,7 @@ class RegisterScreen extends StatelessWidget {
                   ), ),
                   Container(
                     margin: const EdgeInsets.only(top: 200.0),
-                    child: RegisterForm(userRepository: _userRepository),
+                    child: RegisterForm(),
                   )
                 ]),
           ),
