@@ -43,12 +43,8 @@ dependencies:
   firebase_core: ^1.7.0
   firebase_analytics: ^8.3.3
   cloud_firestore: ^2.5.3
-  teq_flutter_core:
-    git:
-      url: ssh://git@git.teqnological.asia:10022/flutter_core/teq-flutter-core.git
-      ref: develop
 
-dev_dependencie s:
+dev_dependencies:
   #flutter_application_id: "^1.0.0"
   flutter_test:
     sdk: flutter

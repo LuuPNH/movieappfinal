@@ -134,7 +134,7 @@ class _PersonsListState extends State<PersonsList> {
                               ),
                             ),
                           )
-                        : Hero(
+                        : persons[index].profileImg != null ? Hero(
                             tag: persons[index].id,
                             child: Container(
                                 width: 70.0,
@@ -145,9 +145,9 @@ class _PersonsListState extends State<PersonsList> {
                                       fit: BoxFit.cover,
                                       image: NetworkImage(
                                           "https://image.tmdb.org/t/p/w300/" +
-                                              persons[index].profileImg)),
+                                              persons[index].profileImg!)),
                                 )),
-                          ),
+                          ) : const SizedBox(),
                     SizedBox(
                       height: 10.0,
                     ),

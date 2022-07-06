@@ -106,7 +106,7 @@ class _LoginFormState extends State<LoginForm> {
                           borderSide: const BorderSide(color: Style.Colors.secondColor, width: 1.0)
                       )
                   ),
-                    autovalidate: true,
+                    autovalidateMode: AutovalidateMode.always,
                     validator: (_) {
                       return !state.isEmailValid! ? 'Invalid Email' : null;
                     },
@@ -138,7 +138,7 @@ class _LoginFormState extends State<LoginForm> {
                             borderSide: const BorderSide(color: Style.Colors.secondColor, width: 1.0)
                         )
                     ),
-                    autovalidate: true,
+                    autovalidateMode: AutovalidateMode.always,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return "Passoword can't empty" ;
