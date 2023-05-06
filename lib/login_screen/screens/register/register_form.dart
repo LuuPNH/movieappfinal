@@ -42,31 +42,23 @@ class _RegisterFormState extends State<RegisterForm> {
   Widget build(BuildContext context) {
     return BlocListener<RegisterBloc, RegisterState>(
       listener: (context, state) {
-        if(state.isFailure!) {
-          Scaffold.of(context)
-            ..removeCurrentSnackBar()
-            ..showSnackBar(
-                SnackBar(
-                    backgroundColor: Style.Colors.secondColor,
-                    content: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("Register Failure! Please again"),
-                          Icon(Icons.error)
-                        ])));
+        if (state.isFailure!) {
+          final snackBar = SnackBar(
+              backgroundColor: Style.Colors.secondColor,
+              content: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [Text("Register Failure! Please again"), Icon(Icons.error)]));
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
         }
-        if(state.isSubmitting!) {
-          Scaffold.of(context)
-            ..removeCurrentSnackBar()
-            ..showSnackBar(
-                SnackBar(
-                    backgroundColor: Style.Colors.secondColor,
-                    content: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("Registering..."),
-                          CircularProgressIndicator()]
-                    )));
+        if (state.isSubmitting!) {
+          final snackBar = SnackBar(
+              backgroundColor: Style.Colors.secondColor,
+              content: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [Text("Registering..."), CircularProgressIndicator()]));
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
         }
         if(state.isSuccess!) {
           BlocProvider.of<AuthenticationBloc>(context).add(
