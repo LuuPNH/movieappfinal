@@ -1,11 +1,15 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:movieappfinal/local_data_manager/local_data_manager.dart';
+import 'package:movieappfinal/profile/login/login_widget.dart';
 import 'package:movieappfinal/search_movie_screen/search.dart';
 import 'package:movieappfinal/style/theme.dart' as Style;
 import 'package:movieappfinal/home_screen/genres/genres.dart';
 import 'package:movieappfinal/home_screen/slide_now_playing/now_playing.dart';
 import 'package:movieappfinal/home_screen/person/persons.dart';
 import 'package:movieappfinal/home_screen/top_movies/top_movies.dart';
+
+import '../../profile/profile_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -24,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
       PersonsList(),
       TopMovies(),
     ]),
+    ProfileWidget(),
   ];
 
   void _onItemTapped(int index) {
@@ -63,7 +68,15 @@ class _HomeScreenState extends State<HomeScreen> {
               )),
           IconButton(
             icon: Icon(Icons.exit_to_app),
-            onPressed: () {},
+            onPressed: () async {
+              await LocalDataManager.localDataManager?.clearAll();
+              Navigator.pushReplacement<void, void>(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => LoginWidget(),
+                ),
+              );
+            },
           )
         ],
       ),

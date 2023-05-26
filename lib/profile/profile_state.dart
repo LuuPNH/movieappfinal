@@ -4,12 +4,14 @@ part of 'profile_bloc.dart';
 class ProfileState {
   final dynamic error;
   final bool isLoading;
-  final User? user;
+  final UserInfo? user;
+  final List<Movie>? movies;
 
   ProfileState({
     this.error,
-    this.isLoading = false,
+    this.isLoading = true,
     this.user,
+    this.movies,
   });
 
   @override
@@ -19,19 +21,22 @@ class ProfileState {
           runtimeType == other.runtimeType &&
           error == other.error &&
           isLoading == other.isLoading &&
+          listEquals(movies, other.movies) &&
           user == other.user;
 
   @override
-  int get hashCode => error.hashCode ^ isLoading.hashCode ^ user.hashCode;
+  int get hashCode => error.hashCode ^ isLoading.hashCode ^ user.hashCode ^ movies.hashCode;
 
   ProfileState copyWith({
     dynamic error,
     bool? isLoading,
-    User? user,
+    UserInfo? user,
+    List<Movie>? movies,
   }) =>
       ProfileState(
         error: error ?? null,
         isLoading: isLoading ?? false,
         user: user ?? this.user,
+        movies: movies ?? this.movies,
       );
 }

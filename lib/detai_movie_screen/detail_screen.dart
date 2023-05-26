@@ -2,6 +2,7 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:movieappfinal/detai_movie_screen/get_movie_videos_bloc.dart';
+import 'package:movieappfinal/local_data_manager/local_data_manager.dart';
 import 'package:movieappfinal/model/movie.dart';
 import 'package:movieappfinal/model/video.dart';
 import 'package:movieappfinal/model/video_response.dart';
@@ -13,6 +14,7 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class MovieDetailScreen extends StatefulWidget {
   final Movie movie;
+
   MovieDetailScreen({Key? key, required this.movie}) : super(key: key);
 
   @override
@@ -21,7 +23,10 @@ class MovieDetailScreen extends StatefulWidget {
 
 class _MovieDetailScreenState extends State<MovieDetailScreen> {
   final Movie movie;
+  Color colorBtnFavorite = Style.Colors.secondColor;
+
   _MovieDetailScreenState(this.movie);
+
   @override
   void initState() {
     super.initState();
@@ -100,7 +105,24 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                             Colors.black.withOpacity(0.9),
                             Colors.black.withOpacity(0.0)
                           ])),
-                    )
+                    ),
+                    Positioned(
+                      right: 16.0,
+                      top: 32.0,
+                      child: FloatingActionButton(
+                        backgroundColor: colorBtnFavorite,
+                        onPressed: () async {
+                          await LocalDataManager.localDataManager
+                              ?.saveMovie(movie);
+                          setState(() {
+                            colorBtnFavorite = Colors.red;
+                          });
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text('Movie added favorite list')));
+                        },
+                        child: Icon(Icons.star_border),
+                      ),
+                    ),
                   ],
                 ),
               ),
